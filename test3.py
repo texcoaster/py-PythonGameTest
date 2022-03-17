@@ -30,7 +30,7 @@ root.bind("<KeyPress>", key_down)
 root.bind("<KeyRelease>", key_up)
 canvas = tkinter.Canvas(width = 800, height = 600, bg = "lightgreen")
 canvas.pack()
-img = tkinter.PhotoImage(file = "mini.png")
+img = tkinter.PhotoImage(file = "image/mini.png")
 canvas.create_image(cx, cy, image = img, tag = "MYCHR")
 
 main_proc()
