@@ -41,17 +41,23 @@ def main_proc():
         mx = mx - 1
     if key == "Right" and maze[my][mx+1] == 0:
         mx = mx + 1
-    canvas.coords("MYCHR", mx * 80 + 40, my * 80 + 40)
+
+    if maze[my][mx] == 0:
+        maze[my][mx] = 2
+    if maze[my][mx] == 2:
+        canvas.create_rectangle(mx * 80, my * 80, mx * 80 + 80, my * 80 + 80, fill = "pink")
+    
+    # canvas.coords("MYCHR", mx * 80 + 40, my * 80 + 40)
+    canvas.delete("MYCHR")
+    canvas.create_image(mx * 80 + 40, my * 80 + 40, image = img, tag = "MYCHR")
     root.after(100, main_proc)
 
-img = tkinter.PhotoImage(file = "mimi_2.png")
+img = tkinter.PhotoImage(file = "image/mini_2.png")
 
 for y in range(len(maze)):
     for x in range(len(maze[y])):
         if maze[y][x] == 1:
             canvas.create_rectangle(x * 80, y * 80, x * 80 + 80, y * 80 + 80, fill = "white")
-        # if maze[y][x] == 2:
-        #     canvas.create_image(x * 80 + 40, y * 80 - 40, image = img, tag = "MYCHR")
 
 canvas.create_image(mx * 80 + 40, my * 80 + 40, image = img, tag = "MYCHR")
 
